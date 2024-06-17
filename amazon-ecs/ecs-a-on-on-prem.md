@@ -260,6 +260,14 @@ ssh vm2 # the VM for webserver application
 <figure><img src="../.gitbook/assets/image (57).png" alt=""><figcaption></figcaption></figure>
 
 ```
+echo export CLUSTER_NAME=$CLUSTER_NAME && \
+echo export ACTIVATION_ID=$(cat ~/environment/hybrid-containers/ssm-activation-2.json  | jq ".ActivationId" -r ) && \
+echo export ACTIVATION_CODE=$(cat ~/environment/hybrid-containers/ssm-activation-2.json  | jq ".ActivationCode" -r)  && \
+echo export AWS_REGION=$AWS_REGION
+
+```
+
+```
 curl -o "ecs-anywhere-install.sh" "https://amazon-ecs-agent.s3.amazonaws.com/ecs-anywhere-install-latest.sh" \
     && sudo chmod +x ecs-anywhere-install.sh
 
